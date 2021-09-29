@@ -1,0 +1,32 @@
+ db.colecao2.aggregate([{
+...  $project:{credit:{$sum:"$credits.value"},debt:{$sum:"$debts.value"}},
+...  }, {
+...  $group:{_id:null,credit:{$sum:"$credit"},debt:{$sum:"$debt"}}
+...  }])
+{ "_id" : null, "credit" : 1000, "debt" : 200 }
+ db.colecao2.findOne({month:3})
+{
+        "_id" : ObjectId("6140b1beede7a477fff38db0"),
+        "name" : "Março/internet",
+        "month" : 3,
+        "year" : 2021,
+        "credits" : [
+                {
+                        "name" : "salario",
+                        "value" : 1000
+                }
+        ],
+        "debts" : [
+                {
+                        "name" : "net",
+                        "value" : 100,
+                        "status" : "PAGO"
+                },
+                {
+                        "name" : "telefone",
+                        "value" : 100,
+                        "status" : "PENDENTE"
+                }
+        ]
+}
+>

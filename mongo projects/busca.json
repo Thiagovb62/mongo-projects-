@@ -1,0 +1,176 @@
+> db.colecao1.find().pretty()
+{
+        "_id" : ObjectId("61408ee7e558444a51bd9b71"),
+        "name" : "Renato",
+        "month" : 9,
+        "year" : 2001,
+        "day" : 12
+}
+{
+        "_id" : ObjectId("6140904ae558444a51bd9b72"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("6140942f8b2a4e84cc0f4f26"),
+        "name" : "janeiro/17",
+        "month" : 9,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("6140970a8b2a4e84cc0f4f27"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614097ba5488e4fc30066582"),
+        "name" : "janeiro/17",
+        "month" : 9,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614097c55488e4fc30066583"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614098c05488e4fc30066584"),
+        "name" : "Março/internet",
+        "month" : 3,
+        "year" : 2021,
+        "credits" : [
+                {
+                        "name" : "salario",
+                        "value" : 1000
+                }
+        ],
+        "debts" : [
+                {
+                        "name" : "net",
+                        "value" : 100,
+                        "status" : "PAGO"
+                },
+                {
+                        "name" : "telefone",
+                        "value" : 100,
+                        "status" : "PENDENTE"
+                }
+        ]
+}
+> db.colecao1.fideone()
+uncaught exception: TypeError: db.colecao1.fideone is not a function :
+@(shell):1:1
+> db.colecao1.findone()
+uncaught exception: TypeError: db.colecao1.findone is not a function :
+@(shell):1:1
+> db.colecao1.findOne()
+{
+        "_id" : ObjectId("61408ee7e558444a51bd9b71"),
+        "name" : "Renato",
+        "month" : 9,
+        "year" : 2001,
+        "day" : 12
+}
+> db.colecao1.find({$or: [(month:3},{month:2}]}).pretty()
+uncaught exception: SyntaxError: missing ) in parenthetical :
+@(shell):1:30
+> db.colecao1.find({$or: [(month:3},{month:9}]}).pretty()
+uncaught exception: SyntaxError: missing ) in parenthetical :
+@(shell):1:30
+> db.colecao1.find({$or: [{month:3},{month:9}]}).pretty()
+{
+        "_id" : ObjectId("61408ee7e558444a51bd9b71"),
+        "name" : "Renato",
+        "month" : 9,
+        "year" : 2001,
+        "day" : 12
+}
+{
+        "_id" : ObjectId("6140904ae558444a51bd9b72"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("6140942f8b2a4e84cc0f4f26"),
+        "name" : "janeiro/17",
+        "month" : 9,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("6140970a8b2a4e84cc0f4f27"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614097ba5488e4fc30066582"),
+        "name" : "janeiro/17",
+        "month" : 9,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614097c55488e4fc30066583"),
+        "conta" : "março/internet",
+        "month" : 3,
+        "year" : 2021
+}
+{
+        "_id" : ObjectId("614098c05488e4fc30066584"),
+        "name" : "Março/internet",
+        "month" : 3,
+        "year" : 2021,
+        "credits" : [
+                {
+                        "name" : "salario",
+                        "value" : 1000
+                }
+        ],
+        "debts" : [
+                {
+                        "name" : "net",
+                        "value" : 100,
+                        "status" : "PAGO"
+                },
+                {
+                        "name" : "telefone",
+                        "value" : 100,
+                        "status" : "PENDENTE"
+                }
+        ]
+}
+> db.colecao1.find({credits: {$exists:true}}).pretty()
+{
+        "_id" : ObjectId("614098c05488e4fc30066584"),
+        "name" : "Março/internet",
+        "month" : 3,
+        "year" : 2021,
+        "credits" : [
+                {
+                        "name" : "salario",
+                        "value" : 1000
+                }
+        ],
+        "debts" : [
+                {
+                        "name" : "net",
+                        "value" : 100,
+                        "status" : "PAGO"
+                },
+                {
+                        "name" : "telefone",
+                        "value" : 100,
+                        "status" : "PENDENTE"
+                }
+        ]
+}
+> db.colecao1.find(year:2017}).skip(1).limit(2)
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:21
+> db.colecao1.find({year:2017}).skip(1).limit(2)
+> db.colecao1.find({year:2021}).skip(1).limit(2)
+{ "_id" : ObjectId("6140942f8b2a4e84cc0f4f26"), "name" : "janeiro/17", "month" : 9, "year" : 2021 }
+{ "_id" : ObjectId("6140970a8b2a4e84cc0f4f27"), "conta" : "março/internet", "month" : 3, "year" : 2021 }

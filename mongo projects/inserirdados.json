@@ -1,0 +1,20 @@
+use db_finance
+switched to db db_finance
+ db.colecao2.insert({name:"janeiro/21",month:1,year:2021})
+WriteResult({ "nInserted" : 1 })
+ db.colecao2.save({name:"fevereiro/21" , month:2, year:2021})
+WriteResult({ "nInserted" : 1 })
+ db.colecao2.insert({
+... name:"Março/21",
+... month:3,
+... year:2021,
+... credits:[
+... {name:"salario",value:1000}
+... ],
+... debts:[
+... {name:"net",value:100,status:"PAGO"},
+... {name:"telefone",value:100,status:"PENDENTE"}
+... ]
+... })
+WriteResult({ "nInserted" : 1 })
+cls

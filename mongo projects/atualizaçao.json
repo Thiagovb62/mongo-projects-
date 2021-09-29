@@ -1,0 +1,21 @@
+ db.colecao2.update(
+... {$and:[{month:1},{year:2021}]},
+... {$set:{credits:[{name:"salario",value:5000}]}}
+... )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.colecao2.findOne()
+{
+        "_id" : ObjectId("6140b0b9d55eab7232d6228f"),
+        "name" : "janeiro/21",
+        "month" : 1,
+        "year" : 2021,
+        "credits" : [
+                {
+                        "name" : "salario",
+                        "value" : 5000
+                }
+        ]
+}
+ db.colecao2.find({credits:{$exists:true}},{_id:0,name:1}).pretty()
+{ "name" : "janeiro/21" }
+{ "name" : "Março/21" } 

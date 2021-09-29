@@ -1,0 +1,23 @@
+> use db_finance
+switched to db db_finance
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db.createCollection('banco_de_dados')
+{ "ok" : 1 }
+> show collections
+banco_de_dados
+> show dbs
+admin       0.000GB
+config      0.000GB
+db_finance  0.000GB
+local       0.000GB
+> db.banco_de_dados.drop()
+true
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> show collections
+>
